@@ -1,12 +1,13 @@
-package entities;
+package transactions;
 
+import entities.TiposConta;
 import interfaces.Transacao;
 
-public class Deposito implements Transacao {
+public class PagamentoServicos implements Transacao {
 
-    public void depositar(TiposConta tipo){
+    public void pagarServico(TiposConta tipo){
 
-        if(tipo.equals(TiposConta.EXECUTIVOS)){
+        if(tipo.equals(TiposConta.BASICO)){
             transacaoOk();
         }
         else{
@@ -17,7 +18,7 @@ public class Deposito implements Transacao {
 
     @Override
     public void transacaoOk() {
-        System.out.println("Realizando transacao...");
+        System.out.println("Realizando pagamento...");
     }
 
     @Override

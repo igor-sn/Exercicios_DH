@@ -18,34 +18,30 @@ public class Program {
 
         executivo.solicitarDeposito();
         executivo.solicitarConsulta();
-
-
-        /*
-        executivo.transferencia();
-        executivo.saque();
-        executivo.consultaSaldo();
-        executivo.pagamentoServico();
+        executivo.solicitarTransferencia();
+        executivo.solicitarSaque();
+        executivo.solicitarPagamento();
 
 
         System.out.println();
         System.out.println("------------------------Basicos------------------------");
 
-        basico.deposito();
-        basico.transferencia();
-        basico.saque();
-        basico.consultaSaldo();
-        basico.pagamentoServico();
+        basico.solicitarDeposito();
+        basico.solicitarConsulta();
+        basico.solicitarTransferencia();
+        basico.solicitarSaque();
+        basico.solicitarPagamento();
 
 
         System.out.println();
         System.out.println("------------------------Cobradores------------------------");
 
-        cobrador.deposito();
-        cobrador.transferencia();
-        cobrador.saque();
-        cobrador.consultaSaldo();
-        cobrador.pagamentoServico();
-*/
+        cobrador.solicitarDeposito();
+        cobrador.solicitarConsulta();
+        cobrador.solicitarTransferencia();
+        cobrador.solicitarSaque();
+        cobrador.solicitarPagamento();
+
 
     }
 }

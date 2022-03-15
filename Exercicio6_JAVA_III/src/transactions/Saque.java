@@ -1,12 +1,13 @@
-package entities;
+package transactions;
 
+import entities.TiposConta;
 import interfaces.Transacao;
 
-public class ConsultaSaldo implements Transacao {
+public class Saque implements Transacao {
 
-    public void consultar(TiposConta tipo){
+    public void sacar(TiposConta tipo){
 
-        if(tipo.equals(TiposConta.COBRADORES) || tipo.equals(TiposConta.COBRADORES)){
+        if(tipo.equals(TiposConta.BASICO) || tipo.equals(TiposConta.COBRADORES) ){
             transacaoOk();
         }
         else{
@@ -17,13 +18,11 @@ public class ConsultaSaldo implements Transacao {
 
     @Override
     public void transacaoOk() {
-        System.out.println("Realizando consulta...");
+        System.out.println("Realizando saque...");
     }
 
     @Override
     public void transacaoNaoOk() {
-
         System.out.println("Transacao invalida.");
-
     }
 }

@@ -1,5 +1,7 @@
 package entities;
 
+import transactions.*;
+
 public class Conta {
 
     private String nome;
@@ -39,5 +41,23 @@ public class Conta {
         ConsultaSaldo consulta = new ConsultaSaldo();
         consulta.consultar(getTipo());
     }
+
+    public void solicitarSaque(){
+        Saque saque = new Saque();
+        saque.sacar(getTipo());
+    }
+
+    public void solicitarPagamento(){
+        PagamentoServicos pagamento = new PagamentoServicos();
+        pagamento.pagarServico(getTipo());
+    }
+
+    public void solicitarTransferencia(){
+        Transferencia transferecia = new Transferencia();
+        transferecia.transferir(getTipo());
+    }
+
+
+
 
 }
