@@ -2,20 +2,25 @@ package application;
 
 import entities.Basico;
 import entities.Cobradores;
+import entities.Conta;
 import entities.Executivos;
 
 public class Program {
 
     public static void main(String[] args) {
 
-        Executivos executivo = new Executivos("Igor");
+        Conta executivo = new Executivos("Igor");
         Basico basico = new Basico("Anna");
         Cobradores cobrador = new Cobradores("Bruna");
 
         System.out.println();
         System.out.println("------------------------Executivos------------------------");
 
-        executivo.deposito();
+        executivo.solicitarDeposito();
+        executivo.solicitarConsulta();
+
+
+        /*
         executivo.transferencia();
         executivo.saque();
         executivo.consultaSaldo();
@@ -40,7 +45,7 @@ public class Program {
         cobrador.saque();
         cobrador.consultaSaldo();
         cobrador.pagamentoServico();
-
+*/
 
     }
 }
