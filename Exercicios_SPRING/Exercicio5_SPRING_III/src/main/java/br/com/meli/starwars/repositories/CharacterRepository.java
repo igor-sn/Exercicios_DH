@@ -3,16 +3,18 @@ package br.com.meli.starwars.repositories;
 
 
 import br.com.meli.starwars.dto.CharacterDTO;
-import br.com.meli.starwars.entities.Character;
 import lombok.Data;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
+
+@Repository
 public class CharacterRepository {
 
-    List<Character> listCharacters = new ArrayList<Character>();
+    List<CharacterDTO> listCharacters = new ArrayList<CharacterDTO>();
 
 
 }

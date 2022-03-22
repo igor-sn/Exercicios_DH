@@ -7,30 +7,49 @@ import br.com.meli.starwars.service.CharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriBuilder;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class CharacterController {
 
 
-    CharacterService charService = new CharacterService();
-
+    @Autowired
+    private CharacterService charService;
 
     @PostMapping("/saveCharacters")
-    public ResponseEntity<List<CharacterDTO>> saveCharacters(@RequestBody List<Character> charactersToAdd) {
+    public ResponseEntity<List<CharacterDTO>> saveCharacters(@RequestBody List<Character> charactersToAdd,  UriComponentsBuilder uriBuilder) {
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(charService.saveCharacters(charactersToAdd));
+
+        URI uri = uriBuilder
+                .path("/Characters")
+                .buildAndExpand(charactersToAdd)
+                .toUri();
+
+
+        return ResponseEntity.created(uri).body(charService.saveCharacters(CharacterDTO.converte(charactersToAdd)));
 
     }
 
-    @GetMapping("/characters")
+    @GetMapping("/Characters")
     public ResponseEntity<List<CharacterDTO>> allCharacters() {
 
-        return ResponseEntity.status(HttpStatus.OK).body(charService.allCharacters());
+        return ResponseEntity.ok(charService.allCharacters());
+
     }
+
+    @GetMapping("/Characters/{name}")
+    public ResponseEntity<List<CharacterDTO>> charactersFindByName(@PathVariable String name) {
+
+        return ResponseEntity.ok(charService.CharacterFindByName(name));
+
+    }
+
+
+
 }
