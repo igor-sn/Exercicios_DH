@@ -14,7 +14,6 @@ public class ObterDiplomaExceptionController {
 
     @ExceptionHandler(ObterDiplomaException.class)
     ResponseEntity<ErrorDTO> handleGlobalExceptions(ObterDiplomaException e) {
-        e.printStackTrace();
         return new ResponseEntity<>(e.getError(), e.getStatus());
     }
 

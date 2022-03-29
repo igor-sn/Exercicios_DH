@@ -1,12 +1,12 @@
 package com.meli.obterdiploma.exception;
 
+
 import com.meli.obterdiploma.model.ErrorDTO;
-import lombok.Data;
+import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
-
-@Data
-public class ObterDiplomaException extends RuntimeException{
+@Getter
+public class ObterDiplomaException extends RuntimeException {
 
     private final ErrorDTO error;
     private final HttpStatus status;
@@ -15,6 +15,5 @@ public class ObterDiplomaException extends RuntimeException{
         this.error = new ErrorDTO(this.getClass().getSimpleName(), message);
         this.status = status;
     }
-
 
 }
