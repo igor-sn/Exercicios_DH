@@ -17,13 +17,13 @@ public class PearlController {
     @Autowired
     PearlService pearlService;
 
-    @PostMapping("/insertPearl")
+    @PostMapping("/pearl")
     public ResponseEntity<PearlDTO> savePearl(@RequestBody PearlDTO pearlDTO, UriComponentsBuilder uriBuilder) {
 
         PearlDTO pearlDTOWhitId = pearlService.savePearl(pearlDTO);
 
         URI uri = uriBuilder
-                .path("/pearls/{id}")
+                .path("/pearl/{id}")
                 .buildAndExpand(pearlDTOWhitId.getId())
                 .toUri();
 
@@ -36,9 +36,20 @@ public class PearlController {
         return new ResponseEntity(pearlService.getAllPearls(), HttpStatus.OK);
     }
 
-    @GetMapping("/pearls/{id}")
-    public ResponseEntity<PearlDTO> findPearlByID(@PathVariable Long id) {
+    @GetMapping("/pearl")
+    public ResponseEntity<PearlDTO> findPearlByID(@RequestParam Long id) {
         return new ResponseEntity(pearlService.findById(id), HttpStatus.OK);
+    }
+
+    @PutMapping("/pearl")
+    public ResponseEntity<PearlDTO> updatePearlById(@RequestParam Long id, @RequestBody PearlDTO pearlDTO) {
+        return new ResponseEntity(pearlService.updatePearl(pearlDTO, id), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/pearl")
+    public ResponseEntity<String> removePearl(@RequestParam Long id) {
+        pearlService.removePearl(id);
+        return new ResponseEntity("Pearl successfully removed", HttpStatus.OK);
     }
 
 }
