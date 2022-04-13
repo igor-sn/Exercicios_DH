@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -19,8 +20,8 @@ public class Actor {
     private String first_name;
     private String last_name;
     private Double rating;
-    private LocalDateTime created_at;
-    private LocalDateTime update_at;
+    private LocalDate created_at;
+    private LocalDate update_at;
 
     @ManyToOne
     @JoinColumn(name = "favorite_movie_id", referencedColumnName = "id")
